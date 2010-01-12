@@ -1,0 +1,97 @@
+# %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+
+Name:           openshot
+Version:        1.0.0
+Release:        %mkrel 1
+Summary:        GNOME Non-linear video editor 
+
+Group:          Video
+License:        GPLv3+
+URL:            http://www.openshotvideo.com/
+
+Source0:        http://launchpad.net/openshot/1.0/1.0.0/+download/openshot_%{version}-1.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildArch: noarch
+
+#BuildRequires: gettext
+BuildRequires: desktop-file-utils
+BuildRequires: python-devel
+
+Requires:      mlt-python
+Requires:      pygoocanvas
+
+%description
+OpenShot Video Editor is a free, open-source, non-linear video editor, based on
+Python, GTK, and MLT. It can edit video and audio files, composite and 
+transition video files, and mix multiple layers of video and audio together and 
+render the output in many different formats.
+
+
+%prep
+%setup -q -n %{name}
+
+
+%build
+CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
+
+
+%install
+%{__rm} -rf $RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --skip-build --root=$RPM_BUILD_ROOT 
+
+# Remove unnecessary file
+%{__rm} %{buildroot}/%{_libdir}/mime/packages/openshot
+
+# We strip bad shebangs (/usr/bin/env) instead of fixing them
+# since these files are not executable anyways
+find %{buildroot}/%{python_sitelib} -name '*.py' \
+  -exec grep -q '^#!' '{}' \; -print | while read F
+do
+  awk '/^#!/ {if (FNR == 1) next;} {print}' $F >chopped
+  touch -r $F chopped
+  mv chopped $F
+done
+
+
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
+
+# modify find-lang.sh to deal with gettext .mo files under
+# openshot/locale
+%{__sed} -e 's|/share/locale/|/%{name}/locale/|' \
+ /usr/lib/rpm/find-lang.sh \
+ > find-lang-modified.sh
+
+sh find-lang-modified.sh %{buildroot} OpenShot %{name}.lang
+find %{buildroot}%{python_sitelib}/%{name}/locale -type d | while read dir
+do
+ echo "%%dir ${dir#%{buildroot}}" >> %{name}.lang
+done
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+update-desktop-database &> /dev/null || :
+update-mime-database %{_datadir}/mime &> /dev/null || :
+
+
+%postun
+update-desktop-database &> /dev/null || :
+update-mime-database %{_datadir}/mime &> /dev/null || :
+
+
+
+%files -f %{name}.lang
+%defattr(-,root,root,-)
+%doc README COPYING AUTHORS 
+%{_bindir}/*
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/*
+%{_datadir}/mime/packages/*
+%{python_sitelib}/%{name}
+%{python_sitelib}/*egg-info
+%{_mandir}/man*/* 
+
+
