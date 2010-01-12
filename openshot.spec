@@ -1,5 +1,3 @@
-# %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-
 Name:           openshot
 Version:        1.0.0
 Release:        %mkrel 1
@@ -41,7 +39,7 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 %{__python} setup.py install -O1 --skip-build --root=$RPM_BUILD_ROOT 
 
 # Remove unnecessary file
-%{__rm} %{buildroot}/%{_libdir}/mime/packages/openshot
+%{__rm} %{buildroot}/%{_usr}/lib/mime/packages/openshot
 
 # We strip bad shebangs (/usr/bin/env) instead of fixing them
 # since these files are not executable anyways
@@ -90,7 +88,19 @@ update-mime-database %{_datadir}/mime &> /dev/null || :
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/*
-%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}/*.py*
+%{python_sitelib}/%{name}/classes/
+%{python_sitelib}/%{name}/effects/
+%{python_sitelib}/%{name}/export_presets
+%{python_sitelib}/%{name}/images
+%{python_sitelib}/%{name}/language
+%{python_sitelib}/%{name}/locale/README
+%{python_sitelib}/%{name}/locale/OpenShot
+%{python_sitelib}/%{name}/profiles
+%{python_sitelib}/%{name}/themes
+%{python_sitelib}/%{name}/titles
+%{python_sitelib}/%{name}/transitions
+%{python_sitelib}/%{name}/windows
 %{python_sitelib}/*egg-info
 %{_mandir}/man*/* 
 
