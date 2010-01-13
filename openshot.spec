@@ -1,6 +1,6 @@
 Name:           openshot
 Version:        1.0.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
@@ -16,7 +16,7 @@ BuildArch: noarch
 BuildRequires: desktop-file-utils
 BuildRequires: python-devel
 
-Requires:      mlt-python
+Requires:      python-mlt
 Requires:      pygoocanvas
 
 %description
