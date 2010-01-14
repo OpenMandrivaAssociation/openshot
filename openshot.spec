@@ -80,7 +80,6 @@ update-desktop-database &> /dev/null || :
 update-mime-database %{_datadir}/mime &> /dev/null || :
 
 
-
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc README COPYING AUTHORS 
