@@ -1,14 +1,14 @@
 Name:           openshot
-Version:        1.0.0
-Release:        %mkrel 2
+Version:        1.1.0
+Release:        %mkrel 0.alpha1
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
 License:        GPLv3+
 URL:            http://www.openshotvideo.com/
 
-Source0:        http://launchpad.net/openshot/1.0/1.0.0/+download/openshot_%{version}-1.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Source0:        http://launchpad.net/openshot/1.0/1.1.0/+download/openshot-%{version}.alpha1.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch: noarch
 
@@ -27,7 +27,7 @@ render the output in many different formats.
 
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}.alpha1
 
 
 %build
@@ -93,8 +93,7 @@ update-mime-database %{_datadir}/mime &> /dev/null || :
 %{python_sitelib}/%{name}/export_presets
 %{python_sitelib}/%{name}/images
 %{python_sitelib}/%{name}/language
-%{python_sitelib}/%{name}/locale/README
-%{python_sitelib}/%{name}/locale/OpenShot
+%{python_sitelib}/%{name}/locale
 %{python_sitelib}/%{name}/profiles
 %{python_sitelib}/%{name}/themes
 %{python_sitelib}/%{name}/titles
