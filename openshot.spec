@@ -1,13 +1,13 @@
 Name:           openshot
-Version:        1.1.3
-Release:        %mkrel 6
+Version:        1.2.2
+Release:        %mkrel 1
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
 License:        GPLv3+
 URL:            http://www.openshotvideo.com/
 
-Source0:        http://launchpad.net/openshot/1.0/1.1.0/+download/openshot-%{version}.tar.gz
+Source0:        http://launchpad.net/openshot/1.2/1.2.2/+download/openshot-%{version}.tar.gz
 Patch0:		default_window_size_is_too_big.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -31,7 +31,7 @@ render the output in many different formats.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p0
+#%patch0 -p0
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
@@ -91,6 +91,7 @@ update-mime-database %{_datadir}/mime &> /dev/null || :
 %{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/*
 %{python_sitelib}/%{name}/*.py*
+%{python_sitelib}/%{name}/blender/
 %{python_sitelib}/%{name}/classes/
 %{python_sitelib}/%{name}/effects/
 %{python_sitelib}/%{name}/export_presets
