@@ -1,6 +1,6 @@
 Name:           openshot
 Version:        1.2.2
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
