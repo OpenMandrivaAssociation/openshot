@@ -1,6 +1,6 @@
 Name:           openshot
-Version:        1.2.2
-Release:        %mkrel 2
+Version:        1.3.0
+Release:        %mkrel 1
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
@@ -102,6 +102,7 @@ update-mime-database %{_datadir}/mime &> /dev/null || :
 %{python_sitelib}/%{name}/themes
 %{python_sitelib}/%{name}/titles
 %{python_sitelib}/%{name}/transitions
+%{python_sitelib}/%{name}/uploads
 %{python_sitelib}/%{name}/windows
 %{python_sitelib}/*egg-info
 %{_mandir}/man*/* 
