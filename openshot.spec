@@ -1,6 +1,6 @@
 Name:           openshot
 Version:        1.3.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
@@ -18,9 +18,11 @@ BuildArch: noarch
 BuildRequires: desktop-file-utils
 BuildRequires: python-devel
 
-Requires:      python-mlt
 Requires:      pygoocanvas
-Requires:      pygtk2 pygtk2.0-libglade
+Requires:      pygtk2
+Requires:      pygtk2.0-libglade
+Requires:      python-imaging
+Requires:      python-mlt
 
 %description
 OpenShot Video Editor is a free, open-source, non-linear video editor, based on
