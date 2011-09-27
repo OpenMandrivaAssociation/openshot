@@ -1,5 +1,8 @@
+%define		major 1.4
+%define		minor 0
+
 Name:           openshot
-Version:        1.3.1
+Version:        %{major}.%{minor}
 Release:        %mkrel 1
 Summary:        GNOME Non-linear video editor 
 
@@ -7,7 +10,7 @@ Group:          Video
 License:        GPLv3+
 URL:            http://www.openshotvideo.com/
 
-Source0:        http://launchpad.net/openshot/1.3/%{version}/+download/openshot-%{version}.tar.gz
+Source0:        http://launchpad.net/openshot/%{major}/%{version}/+download/openshot-%{version}.tar.gz
 Patch0:		default_window_size_is_too_big.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
