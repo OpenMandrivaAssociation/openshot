@@ -3,7 +3,7 @@
 
 Name:           openshot
 Version:        %{major}.%{minor}
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        GNOME Non-linear video editor 
 
 Group:          Video
