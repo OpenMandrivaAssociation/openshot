@@ -27,7 +27,7 @@ Requires:      pygtk2
 Requires:      pygtk2.0-libglade
 Requires:      python-imaging
 Requires:      python-mlt
-Requires:      frei0r-plugins
+Suggests:      frei0r-plugins
 
 %description
 OpenShot Video Editor is a free, open-source, non-linear video editor, based on
