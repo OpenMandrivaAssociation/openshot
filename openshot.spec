@@ -3,7 +3,7 @@
 
 Name:		openshot
 Version:	%{major}.%{minor}
-Release:	1
+Release:	2
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
@@ -18,7 +18,7 @@ Requires:	pygoocanvas
 Requires:	pygtk2
 Requires:	pygtk2.0-libglade
 Requires:	python-imaging
-Requires:	python-pyxdg
+Requires:	pyxdg
 Requires:	python-httplib2
 Suggests:	frei0r-plugins
 
@@ -29,7 +29,7 @@ transition video files, and mix multiple layers of video and audio together and
 render the output in many different formats.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 CFLAGS="%{optflags}" %__python setup.py build
