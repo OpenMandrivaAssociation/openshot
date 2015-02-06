@@ -4,7 +4,7 @@
 %define debug_package	%{nil}
 Name:		openshot
 Version:	%{major}.%{minor}
-Release:	2
+Release:	3
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
