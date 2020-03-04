@@ -14,6 +14,7 @@ BuildArch:	noarch
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 Buildrequires:  python3dist(setuptools)
+Buildrequires:  python3.8dist(pyqt5-sip)
 BuildRequires:	frei0r-plugins-devel
 BuildRequires:	ladspa-devel
 Requires:	python-mlt >= 0.8.8
