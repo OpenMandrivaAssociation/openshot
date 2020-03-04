@@ -13,6 +13,7 @@ Source0:	https://github.com/OpenShot/openshot-qt/archive/v%{version}/%{name}-qt-
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
+Buildrequires:  python3dist(setuptools)
 BuildRequires:	frei0r-plugins-devel
 BuildRequires:	ladspa-devel
 Requires:	python-mlt >= 0.8.8
