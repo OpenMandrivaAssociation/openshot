@@ -1,4 +1,2 @@
-removed_sources:
-  openshot-1.4.2.tar.gz: 2d96855349eab66ccc45e9fe1f69bd0f0309f17d
 sources:
-  openshot-1.4.3.tar.gz: 328fa9839a2bbfe7732349f0b7f3052686448190
+  openshot-qt-2.5.1.tar.gz: 34b7957c8dfae7c847da311d79a005695572b17d

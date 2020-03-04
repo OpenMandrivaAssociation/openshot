@@ -1,47 +1,47 @@
-%define		major	1.4
-%define		minor	3
+%define		major	2.5
+%define		minor	1
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
 Version:	%{major}.%{minor}
-Release:	3
+Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
 URL:		http://www.openshot.org/
-Source0:	http://launchpad.net/openshot/%{major}/%{version}/+download/openshot-%{version}.tar.gz
+Source0:	https://github.com/OpenShot/openshot-qt/archive/v%{version}/%{name}-qt-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 BuildRequires:	frei0r-plugins-devel
 BuildRequires:	ladspa-devel
 Requires:	python-mlt >= 0.8.8
-Requires:	pygoocanvas
-Requires:	pygtk2
-Requires:	pygtk2.0-libglade
+Requires:	python-qt5
 Requires:	python-imaging
+Requires:	python-zmq
+Requires:	python-libopenshot
 Requires:	pyxdg
-Requires:	python-httplib2
+#Requires:	python-httplib2
 Requires:	frei0r-plugins
 Requires:	ladspa
+# FIXME this is not a typo -- openshot does require uic bits.
+# Probably parts of python uic need to move out of -devel.
+Requires:	python-qt5-devel
 
 %description
 OpenShot Video Editor is a free, open-source, non-linear video editor, based on
-Python, GTK, MLT and frei0r. It can edit video and audio files, composite and 
+Python, Qt, MLT and frei0r. It can edit video and audio files, composite and 
 transition video files, and mix multiple layers of video and audio together and 
 render the output in many different formats.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-qt-%{version}
 
 %build
 CFLAGS="%{optflags}" %__python setup.py build
 
 %install
-%__python setup.py install -O1 --skip-build --root=%{buildroot}
-
-# Remove unnecessary file
-%__rm %{buildroot}/%{_usr}/lib/mime/packages/openshot
+%__python setup.py install -O1 --skip-build --root=%{buildroot} --record=%{name}.filelist
 
 # We strip bad shebangs (/usr/bin/env) instead of fixing them
 # since these files are not executable anyways
@@ -54,13 +54,5 @@ do
 done
 
 
-%files 
-%doc README COPYING AUTHORS
-%{_bindir}/*
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/*
-%{_datadir}/mime/packages/*
-%{python_sitelib}/%{name}/
-%{python_sitelib}/*egg-info
-%{_mandir}/man1/%{name}.1.xz  
-%{_mandir}/man1/%{name}-render.1.xz
+%files -f %{name}.filelist
+%doc COPYING AUTHORS
