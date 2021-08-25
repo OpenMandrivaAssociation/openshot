@@ -1,10 +1,10 @@
-%define		major	2.5
-%define		minor	1
+%define		major	2.6
+%define		minor	0
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
 Version:	%{major}.%{minor}
-Release:	2
+Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
