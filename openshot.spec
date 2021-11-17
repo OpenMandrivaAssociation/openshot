@@ -1,5 +1,5 @@
 %define		major	2.6
-%define		minor	0
+%define		minor	1
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
