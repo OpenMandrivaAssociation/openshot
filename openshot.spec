@@ -59,3 +59,14 @@ done
 
 %files
 %doc COPYING AUTHORS
+%{bindir}/openshot-qt
+%{prefix}/lib/mime/packages/openshot-qt
+%{python_sitelib}/openshot_qt-%{version}-py*.*.egg-info
+%{python_sitelib}/openshot_qt/
+%{_datadir}/applications/org.openshot.OpenShot.desktop
+%{_datadir}/metainfo/org.openshot.OpenShot.appdata.xml
+%{_datadir}/mime/packages/org.openshot.OpenShot.xml
+%{_datadir}/pixmaps/openshot-qt.svg
+%{_iconsdir}/hicolor/128x128/apps/openshot-qt.png
+%{_iconsdir}/hicolor/scalable/apps/openshot-qt.svg
+%{_iconsdir}/hicolor/scalable/mimetypes/openshot-qt-doc.svg
