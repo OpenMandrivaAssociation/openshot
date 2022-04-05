@@ -67,6 +67,6 @@ done
 %{_datadir}/metainfo/org.openshot.OpenShot.appdata.xml
 %{_datadir}/mime/packages/org.openshot.OpenShot.xml
 %{_datadir}/pixmaps/openshot-qt.svg
-%{_iconsdir}/hicolor/128x128/apps/openshot-qt.png
+%{_iconsdir}/hicolor/*x*/apps/openshot-qt.png
 %{_iconsdir}/hicolor/scalable/apps/openshot-qt.svg
 %{_iconsdir}/hicolor/scalable/mimetypes/openshot-qt-doc.svg
