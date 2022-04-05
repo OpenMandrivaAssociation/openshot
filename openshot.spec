@@ -57,5 +57,5 @@ do
 done
 
 
-%files -f %{name}.filelist
+%files
 %doc COPYING AUTHORS
