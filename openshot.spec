@@ -60,7 +60,7 @@ done
 %files
 %doc COPYING AUTHORS
 %{_bindir}/openshot-qt
-%{prefix}/lib/mime/packages/openshot-qt
+%{_prefix}/lib/mime/packages/openshot-qt
 %{python_sitelib}/openshot_qt-%{version}-py*.*.egg-info
 %{python_sitelib}/openshot_qt/
 %{_datadir}/applications/org.openshot.OpenShot.desktop
