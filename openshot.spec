@@ -3,7 +3,7 @@
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
-Version:	3.1.0
+Version:	3.1.1
 Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
