@@ -3,12 +3,12 @@
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
-Version:	3.1.1
-Release:	2
+Version:	3.2.0
+Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
-URL:		http://www.openshot.org/
+URL:		https://www.openshot.org/
 Source0:	https://github.com/OpenShot/openshot-qt/archive/v%{version}/%{name}-qt-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils
