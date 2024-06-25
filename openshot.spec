@@ -58,7 +58,7 @@ done
 
 
 %files
-%doc COPYING AUTHORS
+%doc COPYING
 %{_bindir}/openshot-qt
 %{_prefix}/lib/mime/packages/openshot-qt
 %{python_sitelib}/openshot_qt-%{version}-py*.*.egg-info
