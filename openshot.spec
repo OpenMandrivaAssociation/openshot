@@ -3,8 +3,8 @@
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
-Version:	3.3.0
-Release:	2
+Version:	3.5.1
+Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
@@ -13,8 +13,8 @@ Source0:	https://github.com/OpenShot/openshot-qt/archive/v%{version}/%{name}-qt-
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
-BuildRequires:  python3dist(setuptools)
-BuildRequires:  python3dist(pyqt5-sip)
+BuildRequires:  python%{pyver}dist(setuptools)
+BuildRequires:  python%{pyver}dist(pyqt5-sip)
 BuildRequires:  PyQt5
 BuildRequires:	frei0r-plugins-devel
 BuildRequires:	ladspa-devel
