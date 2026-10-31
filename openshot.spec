@@ -3,8 +3,8 @@
 #empty debug package
 %define debug_package	%{nil}
 Name:		openshot
-Version:	4.0.1
-Release:	2
+Version:	4.1.0
+Release:	1
 Summary:	Simple and Powerful video editor
 Group:		Video
 License:	GPLv3+
@@ -13,29 +13,23 @@ Source0:	https://github.com/OpenShot/openshot-qt/archive/v%{version}/%{name}-qt-
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils
 BuildRequires:	pkgconfig(python3)
-BuildRequires:  python%{pyver}dist(setuptools)
-BuildRequires:  python%{pyver}dist(pyqt5-sip)
-BuildRequires:	python-qt5 >= 5.15.11-3
-BuildRequires:	python-qt5-devel >= 5.15.11-3
-BuildRequires:	frei0r-plugins-devel
-BuildRequires:	ladspa-devel
-Requires:	python-mlt >= 7.40.0-12
-Requires:	python-qt5 >= 5.15.11-3
-Requires:	python-imaging
-Requires:	python-zmq
-Requires:	python-libopenshot >= 0.7.0-16
-Requires:	python-pyxdg
-#Requires:	python-httplib2
-Requires:	frei0r-plugins
-Requires:	ladspa
-# FIXME this is not a typo -- openshot does require uic bits.
-# Probably parts of python uic need to move out of -devel.
-Requires:	python-qt5-devel >= 5.15.11-3
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(defusedxml)
+BuildRequires:	python-qt6
+BuildRequires:	python-qt6-devel
+BuildRequires:	python-qt6-statemachine
+Requires:	python-qt6
+# PyQt6.uic.loadUi lives in the -devel package.
+Requires:	python-qt6-devel
+Requires:	python-qt6-statemachine
+Requires:	python%{pyver}dist(defusedxml)
+Requires:	python%{pyver}dist(requests)
+Requires:	python-libopenshot >= 1.1.0
 
 %description
 OpenShot Video Editor is a free, open-source, non-linear video editor, based on
-Python, Qt, MLT and frei0r. It can edit video and audio files, composite and 
-transition video files, and mix multiple layers of video and audio together and 
+Python, Qt, and libopenshot. It can edit video and audio files, composite and
+transition video files, and mix multiple layers of video and audio together and
 render the output in many different formats.
 
 %prep
@@ -61,8 +55,9 @@ done
 %files
 %doc COPYING
 %{_bindir}/openshot-qt
+%{_bindir}/openshot-cli
 %{_prefix}/lib/mime/packages/openshot-qt
-%{python_sitelib}/openshot_qt-%{version}-py*.*.egg-info
+%{python_sitelib}/openshot_qt-%{version}*
 %{python_sitelib}/openshot_qt/
 %{_datadir}/applications/org.openshot.OpenShot.desktop
 %{_datadir}/metainfo/org.openshot.OpenShot.appdata.xml
